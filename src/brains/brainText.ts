@@ -9,19 +9,19 @@ import {UserManagement} from "../messages/UserManagement";
 require('dotenv').config();
 
 export class BrainText {
-    private ctx;
-    private chat;
-    private text: string;
-    private readonly id: number;
-    private readonly first_name?: string;
-    private readonly last_name?: string;
-    private readonly username?: string;
-    private isAdmin;
+    private ctx; // the context of the message
+    private chat; // the chat object
+    private text: string; // the text of the message
+    private readonly id: number; // the id of the chat
+    private readonly first_name?: string; // the first name of the user
+    private readonly last_name?: string; // the last name of the user
+    private readonly username?: string; // the username of the user
+    private isAdmin; // whether the user is an admin
 
-    private user: user | undefined;
-    private talker: talker | undefined;
-    private basicMessages;
-    private userMessages;
+    private user: user | undefined; // the user object [from the database]
+    private talker: talker | undefined; // the talker object [from the database]
+    private basicMessages; // the basic messages object
+    private userMessages; // the user management messages object
 
     constructor(ctx: any) {
         this.ctx = ctx;
@@ -136,7 +136,7 @@ export class BrainText {
                         await this.basicMessages.userIdRequired();
                     }
                 }
-                else if (this.text == "invoice") {
+                else if (this.text == "invoice" && process.env.PAYMENT_KEY != null) {
                     if (this.basicMessages.user != null) {
                         await this.basicMessages.sendInvoice({
                             title: "Invoice",
