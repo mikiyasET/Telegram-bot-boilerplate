@@ -41,6 +41,7 @@ export class BasicIKYB {
             reply_markup: {
                 inline_keyboard: [
                     [{ text: this.ctx.i18n.t("usersBTN"), callback_data: "show_all_users"},{ text: this.ctx.i18n.t("bannedUsersBTN"), callback_data: "show_banned_users"}],
+                    [{ text: this.ctx.i18n.t("statusBTN"), callback_data: "show_status"}],
                     [this.backObj]
                 ]
             },

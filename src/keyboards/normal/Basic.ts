@@ -39,6 +39,7 @@ export class BasicKYB {
             reply_markup: {
                 keyboard: [
                     [{ text: this.ctx.i18n.t("usersBTN")},{ text: this.ctx.i18n.t("bannedUsersBTN")}],
+                    [{ text: this.ctx.i18n.t("statusBTN")}],
                     [this.backObj]
                 ]
             },

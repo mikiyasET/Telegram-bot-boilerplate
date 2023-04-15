@@ -65,12 +65,23 @@
     "dayMakeMore": "ቀናት",
     "yearMakeMore": "ዓመታት",
     "monthMakeMore": "ወራት",
+    "userMakeMore": "ተጠቃሚዎች",
 
     "dayMakeLess": "ቀን",
     "yearMakeLess": "ዓመት",
     "monthMakeLess": "ወር",
+    "userMakeLess": "ተጠቃሚ",
 
     "botConfused": "ይቅርታ ያሉኝ አልገባኝም",
     "notExpected": "ይቅርታ! ይህን አይነት መልክት አልጠየኩም",
-    "underConstruction": "ይቅርታ ይህ በመሰራት ላይ ነው"
+    "underConstruction": "ይቅርታ ይህ በመሰራት ላይ ነው",
+
+    "userIdRequiredMSG": "የተጠቃሚ መለያ ግዴታ ያስፈልጋል",
+    "confirmBanMSG": "${name}ን ለ${day} ሊያግዱ ነው እርግጠኛ ኖት?",
+    "confirmUnbanMSG": "${name}ን ከእግድ ዝርዝሮ ውስጥ ሊያስወጡ ነው እርግጠኛ ኖት?",
+    "unlimitedDaysMSG": "ላልተገደቡ ቀናት",
+    "foreverMSG": "ለዘላለም",
+    "statisticsMSG": "አሁናዊ ሁኔታዎች",
+    "botUsersMSG": "የቦቱ ተጠቃሚዎች",
+    "statusBTN": "\uD83D\uDCCA ሁኔታዎች"
 }

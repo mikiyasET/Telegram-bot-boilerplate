@@ -41,8 +41,20 @@ export class UserManagement {
     async stats() {
         const users = await UserController.getAll();
         const usersCount = users.length;
-        const msg = `<b><u>Statistics</u></b>\n\n<b>Bot Users:</b> ${usersCount}`;
-        await this.ctx.replyWithHTML(msg);
+        const msg = `<b><u>${this.ctx.i18n.t('statisticsMSG')}</u></b>\n\n<b>${this.ctx.i18n.t('botUsersMSG')}:</b> ${usersCount} ${pluralOrSingular('user',usersCount,this.ctx)}`;
+        if (convertToBoolean(process.env.IS_INLINE)) {
+            if (this.basic.isCallback) {
+                this.basic.talker = await TalkerController.talk({
+                    user_id: this.basic.user!.id,
+                    pre_request: this.basic.talker?.request,
+                    request: "userManagementIn",
+                    waiting: true,
+                }) ?? undefined;
+                await this.ctx.editMessageText(msg, this.basic.basicIKYB.back());
+            }
+        } else {
+            await this.ctx.replyWithHTML(msg);
+        }
     }
 
     async showAllUsers() {

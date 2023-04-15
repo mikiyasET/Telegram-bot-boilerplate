@@ -227,6 +227,9 @@ export class BrainText {
                         case this.ctx.i18n.t("bannedUsersBTN"):
                             await this.userMessages.showBannedUsers();
                             break;
+                        case this.ctx.i18n.t("statusBTN"):
+                            await this.userMessages.stats();
+                            break;
                         default:
                             await this.basicMessages.unknownCommand();
                             break

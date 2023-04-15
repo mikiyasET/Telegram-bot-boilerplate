@@ -181,6 +181,9 @@ export class BrainCallback {
                         case "show_banned_users":
                             await this.userMessages.showBannedUsers();
                             break;
+                        case "show_status":
+                            await this.userMessages.stats();
+                            break;
                         default:
                             await this.basicMessages.unknownCommand();
                             break

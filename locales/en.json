@@ -65,10 +65,13 @@
   "dayMakeMore": "days",
   "yearMakeMore": "years",
   "monthMakeMore": "months",
+  "userMakeMore": "users",
+
 
   "dayMakeLess": "day",
   "yearMakeLess": "year",
   "monthMakeLess": "month",
+  "userMakeLess": "user",
 
   "botConfused": "Sorry, I don't understand you",
   "notExpected": "Sorry, I'm not expecting this input",
@@ -78,5 +81,8 @@
   "confirmBanMSG": "Are you sure you want to ban ${name} for ${day}?",
   "confirmUnbanMSG": "Are you sure you want to unban ${name}?",
   "unlimitedDaysMSG": "Unlimited days",
-  "foreverMSG": "Forever"
+  "foreverMSG": "Forever",
+  "statisticsMSG": "Statistics",
+  "botUsersMSG": "Bot Users",
+  "statusBTN": "\uD83D\uDCCA Status"
 }
