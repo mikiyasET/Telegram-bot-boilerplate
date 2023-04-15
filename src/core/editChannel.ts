@@ -1,10 +1,11 @@
 import {BrainChannel} from "../brains/brainChannel";
+import {BrainEditChannel} from "../brains/brainEditChannel";
 
 const { Extra, Markup } = require('telegraf');
-const onChannel = (bot:any) => {
-    bot.on('channel_post', async (ctx:any,next:any) => {
+const onEditChannel = (bot:any) => {
+    bot.on('edited_channel_post', async (ctx:any,next:any) => {
         try {
-            const brain = new BrainChannel(ctx);
+            const brain = new BrainEditChannel(ctx);
             await brain.init();
             return true;
         } catch (e) {
@@ -14,4 +15,4 @@ const onChannel = (bot:any) => {
     return false;
 }
 
-export default onChannel;
+export default onEditChannel;

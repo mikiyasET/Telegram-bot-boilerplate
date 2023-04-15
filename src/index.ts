@@ -15,6 +15,8 @@ import onChannel from "./core/channel";
 import onJoinRequest from "./core/onJoin";
 import {UserController} from "./controllers/UserController";
 import {AdminController} from "./controllers/AdminController";
+import onOther from "./core/onOther";
+import onEditChannel from "./core/editChannel";
 
 const {I18n} = require('telegraf-i18n');
 const express = require('express')
@@ -52,8 +54,13 @@ if (onText(bot)) {
 
 } else if (onChannel(bot)) {
 
+}else if (onEditChannel(bot)) {
+
 } else if (onJoinRequest(bot)) {
 
+}else {
+    console.log("Other")
+    onOther(bot);
 }
 
 app.use(cors());
@@ -78,6 +85,5 @@ prisma.$connect().then(() => {
 });
 app.listen(port, async () => {
     console.log(`Example app listening at http://localhost:${port}`);
-    // @ts-ignore
-    await bot.launch({allowedUpdates: ['chat_member', 'message', 'callback_query', 'pre_checkout_query', 'successful_payment']});
+    await bot.launch({allowedUpdates: ['channel_post','edited_channel_post','chat_member', 'message', 'callback_query', 'pre_checkout_query']});
 });
