@@ -89,7 +89,8 @@ export class BrainText {
                 const textArray = this.text.split(" ");
                 if (this.text == "start" || this.text == "restart") {
                     await this.back("menu");
-                } else if (textArray[0] == "ban") {
+                }
+                else if (textArray[0] == "ban") {
                     if (textArray.length > 1) {
                         const id = textArray[1];
                         const day = textArray.length == 2 ? "unlimited" : textArray[2];
@@ -134,7 +135,30 @@ export class BrainText {
                     } else {
                         await this.basicMessages.userIdRequired();
                     }
-                } else {
+                }
+                else if (this.text == "invoice") {
+                    if (this.basicMessages.user != null) {
+                        await this.basicMessages.sendInvoice({
+                            title: "Invoice",
+                            description: "Invoice description",
+                            products: [
+                                {
+                                    name: "Product 1",
+                                    price: 100,
+                                },
+                                {
+                                    name: "Product 2",
+                                    price: 200,
+                                }
+                            ],
+                            currency: "ETB",
+                            payload: `${this.basicMessages.user.id}:mypayload`
+                        });
+                    } else {
+                        await this.basicMessages.unknownCommand();
+                    }
+                }
+                else {
                     await this.basicMessages.unknownCommand();
                 }
             }

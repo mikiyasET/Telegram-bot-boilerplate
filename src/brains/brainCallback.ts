@@ -86,28 +86,6 @@ export class BrainCallback {
         if (this.data == "start" || this.data == "restart") {
             await this.back("menu");
         }
-        else if (this.data == "invoice") {
-            if (this.basicMessages.user != null) {
-                await this.basicMessages.sendInvoice({
-                    title: "Invoice",
-                    description: "Invoice description",
-                    products: [
-                        {
-                            name: "Product 1",
-                            price: 100,
-                        },
-                        {
-                            name: "Product 2",
-                            price: 200,
-                        }
-                    ],
-                    currency: "ETB",
-                    payload: `${this.basicMessages.user.id}:mypayload`
-                });
-            } else {
-                await this.basicMessages.unknownCommand();
-            }
-        }
         else {
             switch (this.basicMessages.talker?.request) {
                 case "menu":
