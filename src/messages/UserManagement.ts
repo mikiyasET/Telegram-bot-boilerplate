@@ -19,6 +19,7 @@ export class UserManagement {
     }
 
     async menu() {
+        console.log(this.basic.user);
         this.basic.talker = await TalkerController.talk({
             user_id: this.basic.user!.id,
             pre_request: this.basic.talker?.request,
@@ -31,7 +32,7 @@ export class UserManagement {
                 return;
             }
         } else {
-            await this.ctx.reply(this.ctx.i18n.t('userManagementMSG'), this.basic.basicKYB.back());
+            await this.ctx.reply(this.ctx.i18n.t('userManagementMSG'), this.basic.basicKYB.management());
             return;
         }
         await this.basic.unknownCommand();
@@ -76,7 +77,7 @@ export class UserManagement {
                 let message = `<u>${this.ctx.i18n.t('usersMSG')}</u> \n\n`;
                 let count = 1;
                 users.forEach((u) => {
-                    message += `<b>${count}.</b> <i>${u.first_name} ${u.last_name}</i> | <code>${u.id}</code>\n`;
+                    message += `<b>${count}.</b> <i>${u.first_name} ${u.last_name ?? ""}</i> | <code>${u.id}</code>\n`;
                     count++;
                 });
                 await this.ctx.replyWithHTML(message);
@@ -118,7 +119,7 @@ export class UserManagement {
                 let message = `<u>${this.ctx.i18n.t('bannedUsersMSG')}</u> \n\n`;
                 let count = 1;
                 users.forEach((u) => {
-                    message += `<b>${count}.</b> <i>${u.first_name} ${u.last_name}</i> | <code>${u.id}</code>\n`;
+                    message += `<b>${count}.</b> <i>${u.first_name} ${u.last_name ?? ""}</i> | <code>${u.id}</code>\n`;
                     count++;
                 });
                 await this.ctx.replyWithHTML(message);

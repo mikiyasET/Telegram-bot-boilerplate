@@ -40,6 +40,7 @@ export class BrainText {
         const user = await UserController.getByTelegramId(this.id.toString()) ?? undefined;
         if (user != undefined) {
             await this.basicMessages.init();
+            await this.userMessages.init();
             this.user = user;
             this.ctx.i18n.locale(this.user.language);
             const admin = await AdminController.getByUserId(this.user!.id);
@@ -176,7 +177,7 @@ export class BrainText {
                             break;
                         case this.ctx.i18n.t("userManagementBTN"):
                             if (this.isAdmin) {
-                                await this.basicMessages.underConstruction();
+                                await this.userMessages.menu();
                             } else {
                                 await this.basicMessages.unknownCommand();
                             }
@@ -213,6 +214,60 @@ export class BrainText {
                             break;
                         default:
                             await this.basicMessages.unknownCommand();
+                    }
+                    break;
+                case "userManagement":
+                    switch (this.text) {
+                        case this.ctx.i18n.t("backBTN"):
+                            await this.back("menu");
+                            break;
+                        case this.ctx.i18n.t("usersBTN"):
+                            await this.userMessages.showAllUsers();
+                            break;
+                        case this.ctx.i18n.t("bannedUsersBTN"):
+                            await this.userMessages.showBannedUsers();
+                            break;
+                        default:
+                            await this.basicMessages.unknownCommand();
+                            break
+                    }
+                    break;
+                case "userManagementIn":
+                    switch (this.text) {
+                        case this.ctx.i18n.t("backBTN"):
+                            await this.back("userManagement");
+                            break;
+                        default:
+                            await this.basicMessages.unknownCommand();
+                            break
+                    }
+                    break;
+                case "confirmBan":
+                    switch (this.text) {
+                        case this.ctx.i18n.t("noBTN"):
+                        case this.ctx.i18n.t("backBTN"):
+                            await this.back("userManagement");
+                            break;
+                        case "yes":
+                            await this.userMessages.ban();
+                            break;
+                        default:
+                            await this.basicMessages.unknownCommand();
+                            break;
+                    }
+                    break;
+                case "confirmUnban":
+                    switch (this.text) {
+                        case this.ctx.i18n.t("noBTN"):
+                        case this.ctx.i18n.t("backBTN"):
+                            await this.back("userManagement");
+                            break;
+                        case this.ctx.i18n.t("yesBTN"):
+                            await this.userMessages.unban();
+                            break;
+                        default:
+                            await this.basicMessages.unknownCommand();
+                            break;
                     }
                     break;
                 default:

@@ -34,6 +34,17 @@ export class BasicKYB {
             }
         ];
     }
+    management = () => {
+        return {
+            reply_markup: {
+                keyboard: [
+                    [{ text: this.ctx.i18n.t("usersBTN")},{ text: this.ctx.i18n.t("bannedUsersBTN")}],
+                    [this.backObj]
+                ]
+            },
+            parse_mode: "HTML"
+        };
+    }
     back = () => {
         return {
             reply_markup: {

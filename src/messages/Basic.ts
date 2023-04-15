@@ -280,6 +280,8 @@ export class Basic {
             }
             await UserController.update(this.user!.id, {language: language})
             this.ctx.i18n.locale(lang);
+            this.basicKYB = new BasicKYB(this.ctx);
+            this.basicIKYB = new BasicIKYB(this.ctx);
         } catch (e) {
             console.log("Error changing language: " + e);
         }

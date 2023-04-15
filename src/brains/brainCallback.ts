@@ -75,10 +75,8 @@ export class BrainCallback {
             const admin = await AdminController.getByUserId(this.user!.id);
             this.isAdmin = admin != null;
             if (this.basicMessages.talker != null && this.basicMessages.talker.waiting) {
-                console.log("Waiting for user input")
                 await this.watch();
             } else {
-                console.log("Waiting for user request")
                 await this.handleRequest();
             }
         }
@@ -111,7 +109,6 @@ export class BrainCallback {
             }
         }
         else {
-            console.log(this.basicMessages.talker?.request)
             switch (this.basicMessages.talker?.request) {
                 case "menu":
                     switch (this.data) {
